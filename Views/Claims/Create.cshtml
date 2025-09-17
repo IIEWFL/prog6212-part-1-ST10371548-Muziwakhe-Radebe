@@ -1,0 +1,24 @@
+﻿@model PROG6212part2.Models.Claim
+@{
+    Layout = "_Layout";
+}
+
+<h1>Create Claim</h1>
+<form method="post" enctype="multipart/form-data">
+    <div><label>Lecturer name: <input name="LecturerName" required /></label></div>
+    <div><label>Hours worked: <input id="hours" name="HoursWorked" type="number" step="0.5" required /></label></div>
+    <div><label>Hourly rate: <input id="rate" name="HourlyRate" type="number" step="0.01" required /></label></div>
+    <div><label>Amount: <span id="amount">0.00</span></label></div>
+    <div><label>Notes: <textarea name="Notes"></textarea></label></div>
+    <div><label>Upload supporting doc: <input type="file" name="upload" accept=".pdf,.docx,.xlsx" /></label></div>
+    <div><button type="submit">Submit</button></div>
+</form>
+
+<script>
+    const hours = document.getElementById('hours');
+    const rate = document.getElementById('rate');
+    const amount = document.getElementById('amount');
+    function calc(){ amount.textContent = ((parseFloat(hours.value)||0)*(parseFloat(rate.value)||0)).toFixed(2); }
+    hours.addEventListener('input',calc);
+    rate.addEventListener('input',calc);
+</script>

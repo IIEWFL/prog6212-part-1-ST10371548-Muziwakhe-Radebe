@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Claim Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Claim System</a>
+                <div class="navbar-nav">
+                    <a class="nav-link" href="/Claims/Index">Claims</a>
+                    <a class="nav-link" href="/Claims/Create">New Claim</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container mt-4">
+        @RenderBody()
+    </main>
+    <footer class="bg-light text-center py-3 mt-4 border-top">
+        <p>&copy; @DateTime.Now.Year - Claim Management System</p>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

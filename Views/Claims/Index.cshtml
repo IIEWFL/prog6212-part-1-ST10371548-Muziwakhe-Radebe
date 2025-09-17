@@ -1,0 +1,59 @@
+﻿@model IEnumerable<PROG6212part2.Models.Claim>
+@{
+    Layout = "_Layout";
+}
+
+<h1 class="mb-3">Submitted Claims</h1>
+<p><a class="btn btn-primary" href="/Claims/Create">+ New Claim</a></p>
+
+@if (!Model.Any())
+{
+    <div class="alert alert-info">No claims have been submitted yet.</div>
+}
+else
+{
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>Lecturer</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Submitted</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.LecturerName</td>
+                    <td>R @c.Amount</td>
+                    <td>
+                        @switch (c.Status)
+                        {
+                            case PROG6212part2.Models.ClaimStatus.Pending:
+                                <span class="badge bg-warning text-dark">Pending</span>
+                                ;
+                                break;
+                            case PROG6212part2.Models.ClaimStatus.Approved:
+                                <span class="badge bg-success">Approved</span>
+                                ;
+                                break;
+                            case PROG6212part2.Models.ClaimStatus.Rejected:
+                                <span class="badge bg-danger">Rejected</span>
+                                ;
+                                break;
+                        }
+                    </td>
+                    <td>@c.SubmittedAt.ToLocalTime().ToString("yyyy-MM-dd HH:mm")</td>
+                    <td>
+                        <a class="btn btn-sm btn-info" href="/Claims/Details/@c.Id">Details</a>
+                        <a class="btn btn-sm btn-warning" href="/Claims/Edit/@c.Id">Edit</a>
+                        <a class="btn btn-sm btn-danger" href="/Claims/Delete/@c.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+

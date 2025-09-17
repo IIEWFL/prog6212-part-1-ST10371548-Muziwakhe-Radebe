@@ -1,0 +1,15 @@
+﻿@model PROG6212part2.Models.Claim
+@{
+    Layout = "_Layout";
+}
+
+<h1>Delete Claim</h1>
+<p>Are you sure you want to delete this claim?</p>
+<p><strong>Lecturer:</strong> @Model.LecturerName</p>
+<p><strong>Amount:</strong> R @Model.Amount</p>
+
+<form method="post" asp-action="DeleteConfirmed">
+    <input type="hidden" name="id" value="@Model.Id" />
+    <button type="submit" class="btn btn-danger">Yes, delete</button>
+    <a href="/Claims/Index" class="btn btn-secondary">Cancel</a>
+</form>
